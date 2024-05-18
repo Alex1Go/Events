@@ -1,16 +1,20 @@
-export const App = () => {
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import EventRegistration from './EventRegistration';
+import ParticipantList from './ParticipantList';
+import EventBoard from './EventBoard';
+
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Router>
+      <div>
+        <Route path="/" exact component={EventBoard} />
+        <Route path="/register/:id" component={EventRegistration} />
+        <Route path="/view/:id" component={ParticipantList} />
+      </div>
+    </Router>
   );
 };
+
+export default App;
