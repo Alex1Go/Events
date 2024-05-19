@@ -1,48 +1,47 @@
-// import React, { useEffect, useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { fetchEvents } from '../../redux/eventsSlice';
-// import EventCard from '../EventCard/EventCard';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import EventCard from '../EventCard/EventCard';
+import { fetchEvents } from '../../redux/eventsSlice';
 
 const EventBoard = () => {
-  // const dispatch = useDispatch();
-  // const events = useSelector(state => state.events.events);
-  // const eventsStatus = useSelector(state => state.events.status);
-  // const error = useSelector(state => state.events.error);
+  const dispatch = useDispatch();
+  const events = useSelector(state => state.events.events);
+  const eventsStatus = useSelector(state => state.events.status);
+  const error = useSelector(state => state.events.error);
 
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [sortField, setSortField] = useState('');
-  // const eventsPerPage = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortField, setSortField] = useState('');
+  const eventsPerPage = 12;
 
-  // useEffect(() => {
-  //   if (eventsStatus === 'idle') {
-  //     dispatch(fetchEvents(sortField));
-  //   }
-  // }, [eventsStatus, dispatch, sortField]);
+  useEffect(() => {
+    if (eventsStatus === 'idle') {
+      dispatch(fetchEvents(sortField));
+    }
+  }, [eventsStatus, dispatch, sortField]);
 
-  // const handleSort = field => {
-  //   setSortField(field);
-  // };
+  const handleSort = field => {
+    setSortField(field);
+  };
 
-  // const indexOfLastEvent = currentPage * eventsPerPage;
-  // const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  // const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
 
-  // const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
     <div>
       <h1>Events</h1>
 
-      {/* <div>
+      <div>
         <button onClick={() => handleSort('title')}>Sort by Title</button>
         <button onClick={() => handleSort('date')}>Sort by Date</button>
         <button onClick={() => handleSort('organizer')}>
           Sort by Organizer
         </button>
         <EventCard />
-      </div> */}
-      {/* <div>
+      </div>
+      <div>
         {eventsStatus === 'loading' && <div>Loading...</div>}
         {eventsStatus === 'succeeded' &&
           currentEvents.map(event => (
@@ -58,7 +57,7 @@ const EventBoard = () => {
             </button>
           )
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

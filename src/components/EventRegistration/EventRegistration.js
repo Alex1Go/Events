@@ -22,7 +22,7 @@ const EventRegistration = () => {
   };
 
   return (
-    <div className="registration-form">
+    <div>
       <h1>Register for Event</h1>
       <form onSubmit={handleSubmit}>
         <div>
