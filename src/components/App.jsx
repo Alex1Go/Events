@@ -1,20 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
+import EventBoard from './EventBoard/EventBoard';
+// import EventRegistration from './EventRegistration/EventRegistration';
+// import ParticipantsPage from './ParticipantsPage/ParticipantsPage';
 
-import EventRegistration from './EventRegistration';
-import ParticipantList from './ParticipantList';
-import EventBoard from './EventBoard';
-
-const App = () => {
+function App() {
   return (
-    <Router>
-      <div>
-        <Route path="/" exact component={EventBoard} />
-        <Route path="/register/:id" component={EventRegistration} />
-        <Route path="/view/:id" component={ParticipantList} />
-      </div>
-    </Router>
+    <div>
+      <EventBoard />
+    </div>
+    // <Routes>
+
+    //   <Route exact path="/" component={EventBoard} />
+    //   <Route path="/register-event" component={EventRegistration} />
+    //   <Route path="/participants" component={ParticipantsPage} />
+    // </Routes>
   );
-};
+}
 
 export default App;
